@@ -6,6 +6,7 @@ const _ = require('lodash');
 const Handlebars = require('handlebars');
 const mkdirp = require('mkdirp');
 const log = require('../log');
+const opn = require('opn');
 
 /**
  * Format GSheet cells to a readable template format.
@@ -56,7 +57,7 @@ function prepareTemplate(file){
     return readFile(file).then( template => Handlebars.compile(template))
 }
 
-exports.build = function build({template:templateFilePath, output, gsheet,currentPath}){
+exports.build = function build({template:templateFilePath, output, gsheet,currentPath, openInBrowser=true}){
     const absOutputDir = path.join(currentPath,output);
     const relBase = path.relative(absOutputDir,currentPath);
     const globals = {
@@ -68,11 +69,13 @@ exports.build = function build({template:templateFilePath, output, gsheet,curren
         prepareTemplate(path.join(currentPath,templateFilePath))
     ]).then( ([sheets,template]) => {
         mkdirp.sync(absOutputDir);
-        sheets.map(sheet => {
+        return Promise.all(sheets.map(sheet => {
             const rendering = template(Object.assign({},sheet,globals));
             const filePath = path.join(absOutputDir,`${sheet.id}.html`);
             log.small(`Cards generated at ${filePath}`)
             fs.writeFileSync(filePath,rendering);
-        });
+            if(openInBrowser)return opn(filePath,{wait:false});
+            return true;
+        }));
     });
 }

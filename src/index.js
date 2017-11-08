@@ -11,6 +11,7 @@ const pkg = require('../package.json');
 
 const {readFile,parseJSON,readSpreadsheet} = require('./utils');
 const log = require('./log');
+const cli = require('./cli');
 const {build} = require('./commands/build');
 const {setup} = require('./commands/setup');
 
@@ -29,8 +30,8 @@ function getConf(dir) {
 }
 
 log.title(`${pkg.name} ${pkg.version}`);
-const [,,cmd] = process.argv;
-if(cmd == "setup"){
+
+if(cli.command == "setup"){
     setup({currentPath}).then(() => console.info(`setup over`));
 }else{
     getConf(currentPath)
@@ -40,18 +41,18 @@ if(cmd == "setup"){
     })
     .then(conf => {
         
-        if(!cmd){
+        if(!cli.command){
             log.warn(`No command founded`);
         }else{
-            log.info(`try to execute "${cmd}" command`);
+            log.info(`try to execute "${cli.command}" command`);
             const {template, output, gsheet} = conf;
-            switch(cmd){
+            switch(cli.command){
                 case 'build': 
-                    build({template, output, gsheet,currentPath})
+                    build({template, output, gsheet,currentPath,openInBrowser:!cli.getArgument('headless')})
                     .catch( err => log.error(`Error: ${err.message}`))
                     .then(() => log.strong(`build over`)); 
                     break;
-                default: log.warn(`"${cmd}" unknown command`);break;
+                default: log.warn(`"${cli.command}" unknown command`);break;
             }
         }
         
