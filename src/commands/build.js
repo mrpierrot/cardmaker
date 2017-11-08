@@ -5,6 +5,7 @@ const {readFile,parseJSON,readSpreadsheet} = require('../utils');
 const _ = require('lodash');
 const Handlebars = require('handlebars');
 const mkdirp = require('mkdirp');
+const log = require('../log');
 
 /**
  * Format GSheet cells to a readable template format.
@@ -70,7 +71,7 @@ exports.build = function build({template:templateFilePath, output, gsheet,curren
         sheets.map(sheet => {
             const rendering = template(Object.assign({},sheet,globals));
             const filePath = path.join(absOutputDir,`${sheet.id}.html`);
-            console.info(`Cards generated at ${filePath}`)
+            log.small(`Cards generated at ${filePath}`)
             fs.writeFileSync(filePath,rendering);
         });
     });
