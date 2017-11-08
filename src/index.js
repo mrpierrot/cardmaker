@@ -1,11 +1,16 @@
+#! /usr/bin/env node
+
 "use strict"
 
 const fs = require('fs');
 const path = require('path');
-const {readFile,parseJSON,readSpreadsheet} = require('./utils');
 const _ = require('lodash');
 const Handlebars = require('handlebars');
 const mkdirp = require('mkdirp');
+const pkg = require('../package.json');
+
+const {readFile,parseJSON,readSpreadsheet} = require('./utils');
+const {build} = require('./commands/build');
 
 const CONF_FILE_NAME = 'deckcards.json';
 
@@ -21,70 +26,21 @@ function getConf(dir) {
     return readFile(confFilePath).then(parseJSON);
 }
 
-/**
- * Format GSheet cells to a readable template format.
- * @param {array} cells 
- * @return {object} a key/value object
- */
-function formatCells(cells){
-    if(cells.length==0)return {}
-    const varNames = _.head(cells);
-    const varValuesByLine = _.tail(cells);
-    return varValuesByLine.map( 
-        line => _.reduce(line,(res,value,index) => {
-            res[varNames[index]] = value
-            return  res;
-        },{}) 
-    )
-}
-
-/**
- * Format Google SpreadSheet sheets to an array of templates object dictionary. 
- * @param {array} sheets an array of Sheet Object
- * @return {array}
- */
-function formatGSheetToTemplateFiller(sheets){
-    return sheets.map( o => {
-        return {
-            id:_.kebabCase(o.sheet.title),
-            name:o.sheet.title,
-            cards: formatCells(o.cells)
-        }
-    })
-}
-
-/**
- * Read a GSheet from Google Drive and parse it to a list of templates dictionnary.
- * @param {string} crendentials the crendentials file path 
- * @param {string} sheetId the Google SpreadSheet ID in Google Drive
- */
-function readGSheet(credentials,sheetId) {
-    return readSpreadsheet(credentials,sheetId).then(formatGSheetToTemplateFiller);
-}
-
-/**
- * Prepare the template to compile.
- * @param {string} file the template file path
- */
-function prepareTemplate(file){
-    return readFile(file).then( template => Handlebars.compile(template))
-}
-
 getConf(currentPath).then(conf => {
-
-    const {template:templateFilePath, output, gsheet} = conf;
-    const absOutputDir = path.join(currentPath,output);
+    console.info(`${pkg.name} ${pkg.version}`)
+    const [,,cmd] = process.argv;
+    if(!cmd){
+        console.warn(`No command founded`);
+    }else{
+        console.info(`try to execute "${cmd}" command`);
+        const {template, output, gsheet} = conf;
+        switch(cmd){
+            case 'build': build({template, output, gsheet,currentPath}).then(() => console.info(`build over`)); break;
+            default: console.warn(`${cmd} unknown`);break;
+        }
+    }
     
-    Promise.all([
-        readGSheet(path.join(currentPath,gsheet.credentials),gsheet.sheetId),
-        prepareTemplate(path.join(currentPath,templateFilePath))
-    ]).then( ([sheets,template]) => {
-        mkdirp.sync(absOutputDir);
-        sheets.map(sheet => {
-            const rendering = template(sheet);
-            const filePath = path.join(absOutputDir,`${sheet.id}.html`);
-            fs.writeFileSync(filePath,rendering);
-        })
-    });
-
+}).catch(() => {
+    console.error(`"${CONF_FILE_NAME}" not found at ${currentPath}`);
+    console.error(`Try to execute command "deckcards setup".`);
 });
