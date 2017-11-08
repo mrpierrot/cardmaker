@@ -1,0 +1,5 @@
+{
+    "template":"template.html",
+    "output":"/cards",
+    "credentials":"./credentials.json"
+}
