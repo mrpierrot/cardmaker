@@ -1,0 +1,8 @@
+{
+    "template":"template.html",
+    "output":"./cards",
+    "gsheet":{
+        "sheetId":"",
+        "credentials":"./credentials.json"
+    }
+}
