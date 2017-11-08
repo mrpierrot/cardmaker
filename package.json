@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/mrpierrot/deckcards#readme",
   "dependencies": {
-    "google-spreadsheet": "^2.0.4"
+    "google-spreadsheet": "^2.0.4",
+    "lodash": "^4.17.4"
   }
 }
