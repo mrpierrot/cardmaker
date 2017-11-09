@@ -2,6 +2,15 @@
 
 Deckcards is a tool used to generate game's cards from a template and a Google Spreadsheet.
 
+== Disclaimer
+
+It's an early version that barely comes out of the furnace.
+If you want improve this project you can contribute by submitting https://github.com/mrpierrot/deckcards/issues[an issue] or propose a https://github.com/mrpierrot/deckcards/pulls[pull request]
+
+Currently, works fine with nodeJS 6.9.1 and should work fine with nodeJS 6.4.0 and above.
+
+PS: My english can be poor, If you see counterfeit sentences, report it to me, I will not take it badly ... on the contrary :-)
+
 == Install
 
 Install with npm:
