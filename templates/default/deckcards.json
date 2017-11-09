@@ -2,7 +2,7 @@
     "template":"template.html",
     "output":"./cards",
     "gsheet":{
-        "sheetId":"",
-        "credentials":"./credentials.json"
+        "sheetId":"1QJm95kTdpR9XT6fC7sirsPRVFjOOri74-jH3mSd1gf8",
+        "credentials":null
     }
 }

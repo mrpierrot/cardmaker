@@ -1,0 +1,98 @@
+= Deckcards
+
+Deckcards is a tool used to generate game's cards from a template and a Google Spreadsheet.
+
+== Install
+
+Install with npm:
+
+------
+npm install deckcards -g
+------
+
+== Get started
+
+=== Create a project
+
+First, use this command to create a project with default content in the directory *"project_name"*:
+
+------
+deckcards setup <project_name>
+------
+
+Next, go to the directory *"project_name"*
+
+------
+cd ./<project_name>
+------
+
+The project contains the following files :
+
+[options="header,footer"]
+|===========================================
+| File              | Description
+| deckcards.json    | The configuration files
+| template.html     | The HTML template file. Look at http://handlebarsjs.com/[Handlebars.js] to edit.
+| styles.css        | The template's styles.
+|===========================================  
+
+
+=== deckcards.json
+
+The default deckcards.json
+
+[source, json]
+------
+{
+    "template":"template.html",
+    "output":"./cards",
+    "gsheet":{
+        "sheetId":"1QJm95kTdpR9XT6fC7sirsPRVFjOOri74-jH3mSd1gf8",
+        "credentials":null
+    }
+}
+------
+
+==== Description
+
+[options="header,footer"]
+|============================================
+| Name              | Description 
+| template          | The HTML template path
+| output            | The directory where final html files are generated
+| gsheet.sheetId    | The Google Spreadsheet's ID. It can be find here :
+docs.google.com/spreadsheets/d/*1QJm95kTdpR9XT6fC7sirsPRVFjOOri74-jH3mSd1gf8*/edit?usp=sharing
+| gsheet.credentials | The credentials file path ( Example : *"./credentials.json"* ). Set at *null*, if you use a public Google Spreadsheet.
+|============================================
+
+=== Configure Google authentication
+
+For private and public Google Spreadsheets, follow the instructions from https://github.com/theoephraim/node-google-spreadsheet#authentication[node-google-spreadsheet]
+
+If you use private Google Spreadsheet, you get a JSON file with credentials. Copy this file into the project directory and rename it *credentials.json*
+
+In deckcards.json, define the credentials.json path like this : 
+
+[source, json]
+------
+{
+    ...
+    "gsheet":{
+        ...
+        "credentials":"./credentials.json"
+    }
+}
+------
+
+=== Google Spreadsheet Format
+
+You can find an example https://docs.google.com/spreadsheets/d/1QJm95kTdpR9XT6fC7sirsPRVFjOOri74-jH3mSd1gf8/edit#gid=2092230795[here]
+
+The first line contains variables names ( Here : NAME and DESC ).
+Next lines contains values.
+
+You can defined severals sheets. For each sheet, this generates a HTML page.
+
+=== License
+
+Licensed under the link:LICENSE[MIT]
