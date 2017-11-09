@@ -1,16 +1,39 @@
+@page  
+{ 
+    size: A4;
+    margin: 0;  
+} 
+
+body  
+{ 
+    margin: 3mm;  
+    font-size: 12pt;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+@media print {
+	.card-group{ page-break-before: always; }
+}
+
 .card-list {
+   
+}
+
+.card-group{ 
     display: flex;
-    flex-direction: row;
     flex-flow: wrap;
 }
 
 .card {
-    width: 6.3cm;
-    height: 8.8cm;
+    width: 63mm;
+    height: 88mm;
     border: 1px solid black;
-    margin: 0.2cm;
-    padding: 0.3cm;
-    border-radius: 0.3cm;
+    margin: 1mm;
+    padding: 3mm;
+    border-radius: 3mm;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -22,7 +45,7 @@
 
 .card-desc {
     margin: auto 0 0 0;
-    padding: 0.2cm;
+    padding: 2mm;
     border: 1px solid black;
 }
 

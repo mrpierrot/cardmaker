@@ -11,10 +11,15 @@
 <body>
     <div class="card-list">
         {{#each cards}}
-        <div class="card">
-            <div class="card-title">{{NAME}}</div>
-            {{#if DESC }}<div class="card-desc">{{DESC}}</div>{{/if}}
-        </div>
+            {{#if @first}}<div class="card-group">{{/if}}
+                
+            <div class="card">
+                <div class="card-title">{{NAME}}</div>
+                {{#if DESC }}<div class="card-desc">{{DESC}}</div>{{/if}}
+            </div>
+
+            {{#unless @last}}{{#modulo gap=9}}</div><div class="card-group">{{/modulo}}{{/unless}}
+            {{#if @last}}</div>{{/if}}
         {{/each}}
     </div>
 </body>
