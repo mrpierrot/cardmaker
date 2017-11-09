@@ -1,0 +1,20 @@
+.card-list {
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+}
+
+.card {
+    width: 6cm;
+    height: 9cm;
+    border: 1px solid black;
+    margin: 0.5cm;
+    padding: 0.3cm;
+    border-radius: 0.3cm;
+    position: relative;
+}
+
+.card-desc {
+    border: 1px solid black;
+}
+
