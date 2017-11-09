@@ -3,3 +3,25 @@
     flex-direction: row;
     flex-flow: wrap;
 }
+
+.card {
+    width: 6.3cm;
+    height: 8.8cm;
+    border: 1px solid black;
+    margin: 0.2cm;
+    padding: 0.3cm;
+    border-radius: 0.3cm;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title {
+    text-align: center;
+}
+
+.card-desc {
+    margin: auto 0 0 0;
+    padding: 0.2cm;
+    border: 1px solid black;
+}
