@@ -1,6 +1,11 @@
 = Deckcards
 
-Deckcards is a tool used to generate game's cards from a template and a Google Spreadsheet.
+Deckcards is a command line tool used to generate game's cards from a template and a Google Spreadsheet.
+It is currently operational for card prototyping.
+
+== For non-developers
+
+Deckcards needs somes basics knowledges in HTML/CSS and the use of command lines.
 
 == Disclaimer
 
@@ -13,8 +18,9 @@ PS: My English can be poor. If you see an incorrect sentence, please report it t
 
 == Install
 
-Install with npm:
+https://nodejs.org[NodeJS] is required to install Deckcards. You must install it.
 
+Install with npm:
 ------
 npm install deckcards -g
 ------
@@ -100,6 +106,42 @@ You can find an example https://docs.google.com/spreadsheets/d/1QJm95kTdpR9XT6fC
 The first line contains the variable names (here: NAME and DESC) and the next lines store the values.
 
 You can define several sheets, each of them generating its own HTML page.
+
+
+=== Build
+
+Finally, to generate cards use this : 
+
+-------
+deckcards build
+-------
+
+
+== Reference
+
+=== Setup command
+
+-------
+deckcards setup <project_name> <options>
+-------
+
+[options="header,footer"]
+|============================================================
+| Option                     | Alias | Description
+| --template <name\|path>    | -t    | Use a specific template
+|============================================================
+
+=== Build command
+
+-------
+deckcards build <options>
+-------
+
+[options="header,footer"]
+|============================================================
+| Option                    | Alias | Description
+| --nobrowser               | -n    | Skip opening generated of files in the browser
+|============================================================
 
 === License
 

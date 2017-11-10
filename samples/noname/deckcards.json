@@ -1,8 +1,0 @@
-{
-    "template":"template.html",
-    "output":"./cards",
-    "gsheet":{
-        "sheetId":"1VNgkWk0Q41e5G9A1R6EnoDS3ECv0ZXVbVCyH9QtOQng",
-        "credentials":"./credentials.json"
-    }
-}
