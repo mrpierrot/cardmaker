@@ -4,7 +4,7 @@
   "description": "A tool to create cards games",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/mocha/bin/mocha"
   },
   "preferGlobal": true,
   "bin": {
@@ -34,5 +34,8 @@
     "mkdirp": "^0.5.1",
     "ncp": "^2.0.0",
     "opn": "^5.1.0"
+  },
+  "devDependencies": {
+    "mocha": "^4.0.1"
   }
 }
