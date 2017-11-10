@@ -107,6 +107,15 @@ The first line contains the variable names (here: NAME and DESC) and the next li
 
 You can define several sheets, each of them generating its own HTML page.
 
+==== Meta Variables
+
+In the first line, you can define Meta variables used by the Deckcards engine
+
+[options="header,footer"]
+|==========================================================================
+| Variable          | Description
+| __COUNT           | Repeat a card N times ( N is defined in a card line )
+|==========================================================================
 
 === Build
 
