@@ -34,4 +34,13 @@ describe('utils', function () {
                 });
         });
     });
+    describe('#readSpreadsheet()', function () {
+        it('get public sheet content with 2 worksheets', function (done) {
+            utils.readSpreadsheet(null,PUBLIC_SHEET_ID)
+                .then(data => {
+                    assert.equal(data.length,2);
+                    done();
+                });
+        });
+    });
 });
