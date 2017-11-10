@@ -1,6 +1,6 @@
 {
   "name": "deckcards",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A tool to create cards games",
   "main": "src/index.js",
   "scripts": {
