@@ -8,6 +8,7 @@ body
 { 
     margin: 3mm;  
     font-size: 12pt;
+    font-family: "Times New Roman", Times, serif;
 }
 
 *{
@@ -27,11 +28,15 @@ body
     flex-flow: wrap;
 }
 
+.card-group:not(:first-child){
+    margin-top: 3mm;
+}
+
 .card {
     width: 63mm;
     height: 88mm;
     border: 1px solid black;
-    margin: 1mm;
+    margin: 0mm;
     padding: 3mm;
     border-radius: 3mm;
     position: relative;
@@ -48,4 +53,3 @@ body
     padding: 2mm;
     border: 1px solid black;
 }
-
