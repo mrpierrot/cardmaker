@@ -73,7 +73,7 @@ The default deckcards.json
 [options="header,footer"]
 |============================================
 | Name              | Description 
-| template          | The HTML template path
+| templates         | The HTML templates path. It's a dictionnary with sheet name as key
 | output            | The directory where final HTML files are generated
 | gsheet.sheetId    | The Google Spreadsheet's ID. It can be found here:
 docs.google.com/spreadsheets/d/*1QJm95kTdpR9XT6fC7sirsPRVFjOOri74-jH3mSd1gf8*/edit?usp=sharing
