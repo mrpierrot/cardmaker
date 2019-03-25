@@ -1,7 +1,7 @@
 {
     "output":"./cards",
     "templates": {
-        "default": "template.html"
+        "default": "templates/default.html"
     },
     "gsheet":{
         "sheetId":"1QJm95kTdpR9XT6fC7sirsPRVFjOOri74-jH3mSd1gf8",
