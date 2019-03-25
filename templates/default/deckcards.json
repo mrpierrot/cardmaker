@@ -1,6 +1,8 @@
 {
-    "template":"template.html",
     "output":"./cards",
+    "templates": {
+        "default": "template.html"
+    },
     "gsheet":{
         "sheetId":"1QJm95kTdpR9XT6fC7sirsPRVFjOOri74-jH3mSd1gf8",
         "credentials":null

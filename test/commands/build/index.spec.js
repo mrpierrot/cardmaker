@@ -31,9 +31,9 @@ describe('build', function () {
     });
 
     it('generate printable files', function (done) {
-        const { template, output, gsheet } = conf;
+        const { templates, output, gsheet } = conf;
         build({
-             template, output, gsheet, currentPath:projectPath, openInBrowser: false
+             templates, output, gsheet, currentPath:projectPath, openInBrowser: false
         }).then(()=> {
             const outpuDir = path.join(projectPath,output);
             assert.ok(fs.existsSync(outpuDir));
