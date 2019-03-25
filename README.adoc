@@ -59,7 +59,9 @@ The default deckcards.json
 [source, json]
 ------
 {
-    "template":"template.html",
+    "templates":{
+        "default":"template.html"
+    },
     "output":"./cards",
     "gsheet":{
         "sheetId":"1QJm95kTdpR9XT6fC7sirsPRVFjOOri74-jH3mSd1gf8",
