@@ -117,6 +117,7 @@ In the first line, you can define Meta variables used by the Deckcards engine
 |==========================================================================
 | Variable          | Description
 | __COUNT           | Repeat a card N times ( N is defined in a card line )
+| __SKIP            | if equal to 1 or TRUE, skip the line
 |==========================================================================
 
 === Build
