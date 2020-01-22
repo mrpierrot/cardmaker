@@ -1,10 +1,10 @@
 {
   "name": "deckcards",
-  "version": "2.0.2",
+  "version": "3.0.0",
   "description": "A tool to create cards games",
-  "main": "src/index.js",
+  "main": "lib/cli.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha -w"
+    "test": "mocha -w"
   },
   "preferGlobal": true,
   "bin": {
@@ -24,16 +24,16 @@
   },
   "homepage": "https://github.com/mrpierrot/deckcards#readme",
   "dependencies": {
-    "chalk": "^2.3.0",
-    "command-line-args": "^4.0.7",
-    "command-line-commands": "^2.0.1",
-    "command-line-usage": "^4.0.1",
-    "google-spreadsheet": "^2.0.4",
-    "handlebars": "^4.0.11",
-    "lodash": "^4.17.4",
+    "chalk": "^3.0.0",
+    "command-line-args": "^5.1.1",
+    "command-line-commands": "^3.0.1",
+    "command-line-usage": "^6.0.1",
+    "google-spreadsheet": "^2.0.8",
+    "handlebars": "^4.7.2",
+    "lodash": "^4.17.15",
     "mkdirp": "^0.5.1",
     "ncp": "^2.0.0",
-    "opn": "^5.1.0"
+    "open": "^6.0.0"
   },
   "devDependencies": {
     "mocha": "^4.0.1",
