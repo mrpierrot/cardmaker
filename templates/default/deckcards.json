@@ -1,5 +1,4 @@
 {
-    "output":"./cards",
     "templates": {
         "default": "templates/default.html"
     },

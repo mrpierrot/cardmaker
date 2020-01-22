@@ -127,6 +127,13 @@ Finally, to generate cards use this :
 deckcards build
 -------
 
+=== Watch 
+
+-------
+deckcards watch
+-------
+
+You can watch templates and data files : when there are modified, the watcher build the cards
 
 == Reference
 
@@ -146,6 +153,24 @@ deckcards setup <project_name> <options>
 
 -------
 deckcards build <options>
+-------
+
+[options="header,footer"]
+|============================================================
+| Option                    | Alias | Description
+| --nobrowser               | -n    | Skip opening generated of files in the browser
+|============================================================
+
+=== Fetch command
+
+-------
+deckcards fetch
+-------
+
+=== Watch command
+
+-------
+deckcards watch <options>
 -------
 
 [options="header,footer"]
