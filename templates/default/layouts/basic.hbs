@@ -13,10 +13,7 @@
         {{#each cards}}
             {{#if @first}}<div class="card-group">{{/if}}
                 
-            <div class="card">
-                <div class="card-title">{{NAME}}</div>
-                {{#if DESC }}<div class="card-desc">{{DESC}}</div>{{/if}}
-            </div>
+            {{>card card=.}}
 
             {{#unless @last}}{{#modulo gap=9}}</div><div class="card-group">{{/modulo}}{{/unless}}
             {{#if @last}}</div>{{/if}}

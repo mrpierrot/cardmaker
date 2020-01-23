@@ -31,15 +31,15 @@ describe('build', function () {
     });
 
     it('generate printable files', function (done) {
-        const { templates, output, gsheet } = conf;
+        const { templates, output, gsheet, layouts } = conf;
         build({
-             templates, output, gsheet, currentPath:projectPath, openInBrowser: false
+             templates, layouts, output, gsheet, currentPath:projectPath, openInBrowser: false
         }).then(()=> {
-            const outpuDir = path.join(projectPath,output);
+            const outpuDir = path.join(projectPath,output || '.cache');
             assert.ok(fs.existsSync(outpuDir));
             assert.ok(fs.readdirSync(outpuDir).length > 0);
             done();
-        });
+        }).catch((err) => done(err));
         
     });
 
