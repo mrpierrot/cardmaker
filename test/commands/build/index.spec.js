@@ -19,7 +19,7 @@ describe('build', function () {
     before(function (done) {
         tmpobj = tmp.dirSync();
         setup({
-            target: MOCK_PROJECT_NAME,
+            name: MOCK_PROJECT_NAME,
             currentPath: tmpobj.name
         }).then(() => {
             projectPath = path.join(tmpobj.name,MOCK_PROJECT_NAME);

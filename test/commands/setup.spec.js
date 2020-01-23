@@ -18,7 +18,7 @@ describe('setup', function () {
 
     it('setup a default project', function (done) {
         setup({
-            target: MOCK_PROJECT_NAME,
+            name: MOCK_PROJECT_NAME,
             currentPath: tmpobj.name
         }).then(()=> {
             const projectPath = path.join(tmpobj.name,MOCK_PROJECT_NAME);
