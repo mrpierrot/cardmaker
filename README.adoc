@@ -45,10 +45,11 @@ The project contains the following files :
 
 [options="header,footer"]
 |===========================================
-| File              | Description
-| deckcards.json    | The configuration files
-| template.html     | The HTML template file. Look at http://handlebarsjs.com/[Handlebars.js] to edit.
-| styles.css        | The template's styles.
+| File                       | Description
+| deckcards.json             | The configuration files
+| templates/default.hbs      | The Handlebars template file. Look at http://handlebarsjs.com/[Handlebars.js] to edit.
+| layouts/basic.hbs          | The Handlebars layout file. Look at http://handlebarsjs.com/[Handlebars.js] to edit.
+| styles.css                 | The template's styles.
 |===========================================  
 
 
@@ -59,10 +60,12 @@ The default deckcards.json
 [source, json]
 ------
 {
-    "templates":{
-        "default":"template.html"
+    "templates": {
+        "default": "templates/default.hbs"
     },
-    "output":"./cards",
+    "layouts": {
+        "basic": "layouts/basic.hbs"
+    },
     "gsheet":{
         "sheetId":"1QJm95kTdpR9XT6fC7sirsPRVFjOOri74-jH3mSd1gf8",
         "credentials":null
@@ -76,6 +79,7 @@ The default deckcards.json
 |============================================
 | Name              | Description 
 | templates         | The HTML templates path. It's a dictionnary with sheet name as key
+| layouts           | Layout system : usefull to manage differents printers
 | output            | The directory where final HTML files are generated
 | gsheet.sheetId    | The Google Spreadsheet's ID. It can be found here:
 docs.google.com/spreadsheets/d/*1QJm95kTdpR9XT6fC7sirsPRVFjOOri74-jH3mSd1gf8*/edit?usp=sharing
@@ -159,6 +163,7 @@ deckcards build <options>
 [options="header,footer"]
 |============================================================
 | Option                    | Alias | Description
+| --layout                  | -l    | The chosen layout to use
 | --nobrowser               | -n    | Skip opening generated of files in the browser
 |============================================================
 
@@ -177,8 +182,156 @@ deckcards watch <options>
 [options="header,footer"]
 |============================================================
 | Option                    | Alias | Description
+| --layout                  | -l    | The chosen layout to use
 | --nobrowser               | -n    | Skip opening generated of files in the browser
 |============================================================
+
+=== Template/Layout management
+
+Deckcards can manage template with ou without layout
+
+==== Work without layouts
+
+This is a example of template without layouts : All the content are in an unique template
+
+[source, html]
+------
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{title}}</title>
+  <link rel="stylesheet" href="{{base}}/styles.css">
+</head>
+<body>
+    <div class="card-list">
+        {{#each cards}}
+            <div class="card">
+                <div class="card-title">{{NAME}}</div>
+                {{#if DESC }}<div class="card-desc">{{DESC}}</div>{{/if}}
+            </div>
+        {{/each}}
+    </div>
+</body>
+</html>
+------
+
+==== Work with layouts
+
+If you want to print with a basic printer machine for prototyping, you want a différent format for printing house. Layout help to work with differents this print format. 
+
+This is a basic layout : 
+
+[source, html]
+------
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{title}}</title>
+  <link rel="stylesheet" href="{{base}}/styles.css">
+</head>
+<body>
+    <div class="card-list">
+        {{#each cards}}
+            {{>card card=.}}
+        {{/each}}
+    </div>
+</body>
+</html>
+------
+
+You can note the 
+
+[source, html]
+------
+    {{>card card=.}}
+------
+
+This is a basic Handlebars partial name **card** 
+The current card data is pass to this partial
+
+And your template look like this now : 
+
+[source, html]
+------
+<div class="card">
+    <div class="card-title">{{NAME}}</div>
+    {{#if DESC }}<div class="card-desc">{{DESC}}</div>{{/if}}
+</div>
+------
+
+==== Layout in deckcards.json
+
+Basic configuration : 
+
+[source, json]
+------
+{
+    "templates": {
+        "default": "templates/default.hbs"
+    },
+    "layouts": {
+        "basic": "layouts/basic.hbs"
+    },
+    "gsheet":{
+        "sheetId":"1QJm95kTdpR9XT6fC7sirsPRVFjOOri74-jH3mSd1gf8",
+        "credentials":null
+    }
+}
+------
+
+Advanced configuration with layout overrides : 
+
+[source, json]
+------
+{
+    "templates": {
+        "default": {
+            "template : "templates/default.hbs",
+            "layouts" : {
+                "basic" : "layouts/basic-overridden.hbs"
+            }
+        }
+    },
+    "layouts": {
+        "basic": "layouts/basic.hbs"
+    },
+    "gsheet":{
+        "sheetId":"1QJm95kTdpR9XT6fC7sirsPRVFjOOri74-jH3mSd1gf8",
+        "credentials":null
+    }
+}
+------
+
+==== Build and watch with layouts.
+
+To buid : 
+[source]
+------
+deckcards build -l pro
+------
+
+or
+
+[source]
+------
+deckcards build --layout pro
+------
+
+To watch : 
+
+[source]
+------
+deckcards watch -l pro
+------
+
+or 
+
+[source]
+------
+deckcards watch --layout pro
+------
 
 === License
 
