@@ -1,6 +1,6 @@
 {
-  "name": "deckcards",
-  "version": "3.0.1",
+  "name": "cardmaker",
+  "version": "4.0.0",
   "description": "A tool to create cards games",
   "main": "lib/index.js",
   "scripts": {
@@ -8,21 +8,21 @@
   },
   "preferGlobal": true,
   "bin": {
-    "deckcards": "lib/cli.js"
+    "cardmaker": "lib/cli.js"
   },
   "engines": {
     "node": ">=6.4.0"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mrpierrot/deckcards.git"
+    "url": "git+https://github.com/mrpierrot/cardmaker.git"
   },
   "author": "Pierre Chabiland <pierre@casusludi.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mrpierrot/deckcards/issues"
+    "url": "https://github.com/mrpierrot/cardmaker/issues"
   },
-  "homepage": "https://github.com/mrpierrot/deckcards#readme",
+  "homepage": "https://github.com/mrpierrot/cardmaker#readme",
   "dependencies": {
     "chalk": "^3.0.0",
     "chokidar": "^3.3.1",

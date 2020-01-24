@@ -1,16 +1,20 @@
-= Deckcards
+= Cardmaker
 
-Deckcards is a command line tool used to generate game's cards from a template and a Google Spreadsheet.
+Cardmaker is a command line tool used to generate game's cards from a template and a Google Spreadsheet.
 It is currently operational for card prototyping.
+
+= UPDATE : DECKCARDS IS NOW CARDMAKER
+
+Cardmaker is more simple to tape than Deckcards :-)
 
 == For non-developers
 
-Deckcards needs somes basics knowledges in HTML/CSS and the use of command lines.
+Cardmaker needs somes basics knowledges in HTML/CSS and the use of command lines.
 
 == Disclaimer
 
 It's an early version that barely comes out of the furnace.
-If you want to improve this project you can contribute by submitting https://github.com/mrpierrot/deckcards/issues[an issue] or propose a https://github.com/mrpierrot/deckcards/pulls[pull request]
+If you want to improve this project you can contribute by submitting https://github.com/mrpierrot/cardmaker/issues[an issue] or propose a https://github.com/mrpierrot/cardmaker/pulls[pull request]
 
 Currently, works fine with nodeJS 6.9.1 and should work fine with nodeJS 6.4.0 and above.
 
@@ -18,11 +22,11 @@ PS: My English can be poor. If you see an incorrect sentence, please report it t
 
 == Install
 
-https://nodejs.org[NodeJS] is required to install Deckcards. You must install it.
+https://nodejs.org[NodeJS] is required to install Cardmaker. You must install it.
 
 Install with npm:
 ------
-npm install deckcards -g
+npm install cardmaker -g
 ------
 
 == Get started
@@ -32,7 +36,7 @@ npm install deckcards -g
 First, use this command to create a project with default content in the directory *"project_name"*:
 
 ------
-deckcards setup <project_name>
+cardmaker setup <project_name>
 ------
 
 Next, go to the directory *"project_name"*
@@ -46,16 +50,16 @@ The project contains the following files :
 [options="header,footer"]
 |===========================================
 | File                       | Description
-| deckcards.json             | The configuration files
+| cardmaker.json             | The configuration files
 | templates/default.hbs      | The Handlebars template file. Look at http://handlebarsjs.com/[Handlebars.js] to edit.
 | layouts/basic.hbs          | The Handlebars layout file. Look at http://handlebarsjs.com/[Handlebars.js] to edit.
 | styles.css                 | The template's styles.
 |===========================================  
 
 
-=== deckcards.json
+=== cardmaker.json
 
-The default deckcards.json
+The default cardmaker.json
 
 [source, json]
 ------
@@ -92,7 +96,7 @@ For private and public Google Spreadsheets, follow the instructions from https:/
 
 If you use private Google Spreadsheet, you get a JSON file with credentials. Copy this file into the project directory and rename it *credentials.json*
 
-In deckcards.json, define the credentials.json path like this:
+In cardmaker.json, define the credentials.json path like this:
 
 [source, json]
 ------
@@ -115,7 +119,7 @@ You can define several sheets, each of them generating its own HTML page.
 
 ==== Meta Variables
 
-In the first line, you can define Meta variables used by the Deckcards engine
+In the first line, you can define Meta variables used by the Cardmaker engine
 
 [options="header,footer"]
 |==========================================================================
@@ -129,13 +133,13 @@ In the first line, you can define Meta variables used by the Deckcards engine
 Finally, to generate cards use this : 
 
 -------
-deckcards build
+cardmaker build
 -------
 
 === Watch 
 
 -------
-deckcards watch
+cardmaker watch
 -------
 
 You can watch templates and data files : when there are modified, the watcher build the cards
@@ -145,7 +149,7 @@ You can watch templates and data files : when there are modified, the watcher bu
 === Setup command
 
 -------
-deckcards setup <project_name> <options>
+cardmaker setup <project_name> <options>
 -------
 
 [options="header,footer"]
@@ -157,7 +161,7 @@ deckcards setup <project_name> <options>
 === Build command
 
 -------
-deckcards build <options>
+cardmaker build <options>
 -------
 
 [options="header,footer"]
@@ -170,13 +174,13 @@ deckcards build <options>
 === Fetch command
 
 -------
-deckcards fetch
+cardmaker fetch
 -------
 
 === Watch command
 
 -------
-deckcards watch <options>
+cardmaker watch <options>
 -------
 
 [options="header,footer"]
@@ -188,7 +192,7 @@ deckcards watch <options>
 
 === Template/Layout management
 
-Deckcards can manage template with ou without layout
+Cardmaker can manage template with ou without layout
 
 ==== Work without layouts
 
@@ -261,7 +265,7 @@ And your template look like this now :
 </div>
 ------
 
-==== Layout in deckcards.json
+==== Layout in cardmaker.json
 
 Basic configuration : 
 
@@ -309,28 +313,28 @@ Advanced configuration with layout overrides :
 To buid : 
 [source]
 ------
-deckcards build -l pro
+cardmaker build -l pro
 ------
 
 or
 
 [source]
 ------
-deckcards build --layout pro
+cardmaker build --layout pro
 ------
 
 To watch : 
 
 [source]
 ------
-deckcards watch -l pro
+cardmaker watch -l pro
 ------
 
 or 
 
 [source]
 ------
-deckcards watch --layout pro
+cardmaker watch --layout pro
 ------
 
 === License
