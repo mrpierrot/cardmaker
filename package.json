@@ -1,5 +1,5 @@
 {
-  "name": "cardmaker",
+  "name": "@mrpierrot/cardmaker",
   "version": "4.0.0",
   "description": "A tool to create cards games",
   "main": "lib/index.js",

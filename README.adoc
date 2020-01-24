@@ -26,7 +26,7 @@ https://nodejs.org[NodeJS] is required to install Cardmaker. You must install it
 
 Install with npm:
 ------
-npm install cardmaker -g
+npm install @mrpierrot/cardmaker -g
 ------
 
 == Get started
