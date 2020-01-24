@@ -1,7 +1,7 @@
 const assert = require('assert');
 const GoogleSpreadsheet = require("google-spreadsheet");
 
-const gsheet = require('../../../lib/commands/build/gsheet');
+const gsheet = require('../../../lib/utils/gsheet');
 
 const PUBLIC_SHEET_ID = '1QJm95kTdpR9XT6fC7sirsPRVFjOOri74-jH3mSd1gf8';
 

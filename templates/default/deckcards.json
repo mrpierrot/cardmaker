@@ -1,7 +1,9 @@
 {
-    "output":"./cards",
     "templates": {
-        "default": "templates/default.html"
+        "default": "templates/default.hbs"
+    },
+    "layouts": {
+        "basic": "layouts/basic.hbs"
     },
     "gsheet":{
         "sheetId":"1QJm95kTdpR9XT6fC7sirsPRVFjOOri74-jH3mSd1gf8",
