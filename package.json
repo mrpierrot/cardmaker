@@ -1,6 +1,6 @@
 {
   "name": "@mrpierrot/cardmaker",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "description": "A tool to create cards games",
   "main": "lib/index.js",
   "scripts": {
@@ -34,7 +34,8 @@
     "lodash": "^4.17.15",
     "mkdirp": "^0.5.1",
     "ncp": "^2.0.0",
-    "open": "^6.0.0"
+    "open": "^6.0.0",
+    "puppeteer": "^2.0.0"
   },
   "devDependencies": {
     "mocha": "^4.0.1",

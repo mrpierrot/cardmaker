@@ -16,10 +16,6 @@ Cardmaker needs somes basics knowledges in HTML/CSS and the use of command lines
 It's an early version that barely comes out of the furnace.
 If you want to improve this project you can contribute by submitting https://github.com/mrpierrot/cardmaker/issues[an issue] or propose a https://github.com/mrpierrot/cardmaker/pulls[pull request]
 
-Currently, works fine with nodeJS 6.9.1 and should work fine with nodeJS 6.4.0 and above.
-
-PS: My English can be poor. If you see an incorrect sentence, please report it to me, I won't take it the wrong way :-)
-
 == Install
 
 https://nodejs.org[NodeJS] is required to install Cardmaker. You must install it.
@@ -144,6 +140,14 @@ cardmaker watch
 
 You can watch templates and data files : when there are modified, the watcher build the cards
 
+=== Export
+
+-------
+cardmaker export
+-------
+
+You can export to pdf files
+
 == Reference
 
 === Setup command
@@ -188,6 +192,18 @@ cardmaker watch <options>
 | Option                    | Alias | Description
 | --layout                  | -l    | The chosen layout to use
 | --nobrowser               | -n    | Skip opening generated of files in the browser
+|============================================================
+
+=== Export command
+
+-------
+cardmaker export <options>
+-------
+
+[options="header,footer"]
+|============================================================
+| Option                    | Alias | Description
+| --layout                  | -l    | The chosen layout to use
 |============================================================
 
 === Template/Layout management
